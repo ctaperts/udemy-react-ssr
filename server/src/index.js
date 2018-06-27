@@ -14,12 +14,13 @@ app.get('*', (req, res) => {
   const store = createStore()
 
   const promises = matchRoutes(Routes, req.path).map(({ route }) => {
-    route.loadData ? route.loadData(store) : null;
+    return route.loadData ? route.loadData(store) : null;
   });
 
   Promise.all(promises).then(() => {
     res.send(renderer(req, store));
-  })
+  });
+
 });
 
 app.listen(3000, () => {
