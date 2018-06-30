@@ -8346,7 +8346,7 @@ var _Routes = __webpack_require__(474);
 
 var _Routes2 = _interopRequireDefault(_Routes);
 
-var _reducers = __webpack_require__(479);
+var _reducers = __webpack_require__(480);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -38921,6 +38921,10 @@ var _UsersListPage = __webpack_require__(478);
 
 var _UsersListPage2 = _interopRequireDefault(_UsersListPage);
 
+var _NotFoundPage = __webpack_require__(479);
+
+var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = [_extends({}, _App2.default, {
@@ -38929,7 +38933,7 @@ exports.default = [_extends({}, _App2.default, {
     exact: true
   }), _extends({
     path: '/users'
-  }, _UsersListPage2.default)]
+  }, _UsersListPage2.default), _extends({}, _NotFoundPage2.default)]
 })];
 
 /***/ }),
@@ -39016,7 +39020,7 @@ var Header = function Header(_ref) {
     null,
     _react2.default.createElement(
       'div',
-      { className: 'nav-wrapper' },
+      { className: 'nav-wrapper', style: { textAlign: 'center' } },
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: '/', className: 'brand-log' },
@@ -39196,13 +39200,46 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var NotFoundPage = function NotFoundPage(_ref) {
+  var _ref$staticContext = _ref.staticContext,
+      staticContext = _ref$staticContext === undefined ? {} : _ref$staticContext;
+
+  staticContext.notFound = true;
+  return _react2.default.createElement(
+    'h1',
+    null,
+    'Oops, not found.'
+  );
+};
+
+exports.default = {
+  component: NotFoundPage
+};
+
+/***/ }),
+/* 480 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _redux = __webpack_require__(115);
 
-var _usersReducer = __webpack_require__(480);
+var _usersReducer = __webpack_require__(481);
 
 var _usersReducer2 = _interopRequireDefault(_usersReducer);
 
-var _authReducer = __webpack_require__(481);
+var _authReducer = __webpack_require__(482);
 
 var _authReducer2 = _interopRequireDefault(_authReducer);
 
@@ -39214,7 +39251,7 @@ exports.default = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 480 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39239,7 +39276,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 481 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

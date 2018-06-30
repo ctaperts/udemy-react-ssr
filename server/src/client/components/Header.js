@@ -12,7 +12,7 @@ const Header = ({ auth }) => {
   )
   return (
     <nav>
-      <div className="nav-wrapper">
+      <div className="nav-wrapper" style={{textAlign: 'center'}}>
         <Link to="/" className="brand-log">React SSR</Link>
         <ul className="right">
           <li><Link to="/users">Users</Link></li>
