@@ -1,9 +1,9 @@
 const path = require('path');
 const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base.js');
+const { commonLoaders } = require('./webpack.base.js');
 const webpackNodeExternals = require('webpack-node-externals');
 
-const config = {
+module.exports = {
   // inform webpack we are building a bundle for nodejs
   // rather than for the browser
   target: 'node',
@@ -19,7 +19,29 @@ const config = {
     path: path.resolve(__dirname, 'build')
   },
 
-  externals: [webpackNodeExternals()]
+  externals: [webpackNodeExternals()],
+  module: {
+    rules: commonLoaders.concat([
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'isomorphic-style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
+    ])
+  }
 };
-
-module.exports = merge(baseConfig, config);
